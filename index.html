@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Online Appointment Management Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-left">
+      <div class="logo-circle">+</div>
+      <div>
+        <h1>Online Appointment Management Portal</h1>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav-bar">
+    <button class="nav-btn" data-target="doctors-section">Doctors</button>
+    <button class="nav-btn" data-target="book-section">Book Appointment</button>
+    <button class="nav-btn" data-target="appointments-section">Appointments</button>
+  </nav>
+
+  <main>
+    <!-- Dashboard Stats -->
+    <section class="page-section dashboard-section">
+      <h2>Overview</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <p class="stat-label">Total Doctors</p>
+          <p class="stat-value" id="statTotalDoctors">0</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">Total Appointments</p>
+          <p class="stat-value" id="statTotalAppointments">0</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">Today’s Appointments</p>
+          <p class="stat-value" id="statTodayAppointments">0</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Doctors List -->
+    <section id="doctors-section" class="page-section">
+      <div class="section-header">
+        <h2>Available Doctors</h2>
+        <p class="section-subtitle">
+          Select a doctor based on specialization and consultation fee.
+        </p>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Specialization</th>
+              <th>Consultation Fee</th>
+            </tr>
+          </thead>
+          <tbody id="doctors-table-body">
+            <!-- Filled by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Book Appointment -->
+    <section id="book-section" class="page-section hidden">
+      <div class="section-header">
+        <h2>Book an Appointment</h2>
+      </div>
+
+      <form id="appointment-form" novalidate class="form-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="patientName">Patient Name</label>
+            <input
+              type="text"
+              id="patientName"
+              placeholder="Enter full name"
+              required
+            />
+            <small class="error-msg" id="patientNameError"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="doctorSelect">Doctor</label>
+            <select id="doctorSelect" required>
+              <option value="">-- Select Doctor --</option>
+            </select>
+            <small class="helper-text" id="doctorFeeInfo"></small>
+            <small class="error-msg" id="doctorSelectError"></small>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="appointmentDate">Date</label>
+            <input type="date" id="appointmentDate" required />
+            <small class="error-msg" id="appointmentDateError"></small>
+          </div>
+
+          <div class="form-group">
+            <label>Time</label>
+            <div class="time-row">
+              <select id="hourSelect" required>
+                <option value="">HH</option>
+              </select>
+              <select id="minuteSelect" required>
+                <option value="">MM</option>
+              </select>
+              <select id="ampmSelect" required>
+                <option value="">AM/PM</option>
+                <option value="AM">AM</option>
+                <option value="PM">PM</option>
+              </select>
+            </div>
+            <small class="error-msg" id="appointmentTimeError"></small>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit">Book Appointment</button>
+          <p id="formSuccess" class="success-msg"></p>
+        </div>
+      </form>
+    </section>
+
+    <!-- Appointments List -->
+    <section id="appointments-section" class="page-section hidden">
+      <div class="section-header">
+        <h2>Booked Appointments</h2>
+        <p class="section-subtitle">Track all scheduled appointments below.</p>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Patient Name</th>
+              <th>Doctor</th>
+              <th>Specialization</th>
+              <th>Date</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody id="appointments-table-body">
+            <!-- Filled by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+      <p id="noAppointmentsMsg" class="muted"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Online Appointment Management Portal</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
